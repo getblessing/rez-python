@@ -6,7 +6,7 @@ name = "python"
 
 authors = ["Guido van Rossum"]
 
-description = "The Python programming language.(Ship via Miniconda)"
+description = "The Python programming language"
 
 
 @early()
@@ -38,25 +38,19 @@ variants = [
 ]
 
 
-build_requires = [
-    "miniconda",
-]
-
-
+private_build_requires = ["rezutil-1"]
 build_command = "python {root}/rezbuild.py {install}"
 
 
 def commands():
     env = globals()["env"]
-    this = globals()["this"]
     system = globals()["system"]
-    building = globals()["building"]
 
     if system.platform == "windows":
-        env.PATH.prepend("{root}/payload/Library/bin")
-        env.PATH.prepend("{root}/payload/Scripts")
         env.PATH.prepend("{root}/payload")
+        env.PATH.prepend("{root}/payload/Scripts")
     else:
+        # untested
         env.PATH.prepend("{root}/payload/bin")
 
 
