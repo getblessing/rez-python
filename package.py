@@ -32,6 +32,11 @@ def version():
 
     return python_version
 
+tools = [
+    "python",
+    "pythonw",
+    "pip",
+]
 
 variants = [
     ["platform-*"],
