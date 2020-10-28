@@ -28,7 +28,8 @@ def version():
         exec(add_args.read(), {"parser": parser})
 
     args, unknown = parser.parse_known_args()  # parse `sys.argv`
-    python_version = args.version
+    local_patch = "+1"
+    python_version = args.version + local_patch
 
     return python_version
 
